@@ -1,0 +1,15 @@
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule ".config/alacritty/alacritty-theme"]
+	path = .config/alacritty/alacritty-theme
+  url = https://github.com/alacritty/alacritty-theme.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+  url = https://github.com/tmux-plugins/tpm.git
+[submodule ".config/tmux/plugins/tmux-monokai-pro"]
+	path = .config/tmux/plugins/tmux-monokai-pro
+  url = https://github.com/maxpetretta/tmux-monokai-pro.git
+[submodule ".asdf"]
+  path = .asdf
+	url = https://github.com/asdf-vm/asdf.git

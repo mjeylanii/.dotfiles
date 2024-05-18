@@ -1,0 +1,8 @@
+.DS_Store
+.config/github-copilot/
+.config/configstore/
+.config/zed/.*
+gh/
+flutter/
+raycast/
+Webull Desktop/
