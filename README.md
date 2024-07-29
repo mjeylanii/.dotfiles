@@ -31,7 +31,7 @@ brew install zoxide
 First, check out the dotfiles repo in your $HOME directory using git
 
 ```shell
-git clone git@github.com/zxcvbnmmohd/.dotfiles
+git clone git@github.com/mjeylanii/.dotfiles
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosugg ]estions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
