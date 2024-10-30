@@ -40,7 +40,7 @@ export PATH=~/.npm-global/bin:$PATH
 # Aliases
 alias n="nvim"
 alias t="tmux"
-alias python="python3"
+alias p="python3"
 alias pip="pip3"
 
 # If you come from bash you might have to change your $PATH.
