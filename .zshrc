@@ -179,3 +179,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(rbenv init - zsh)"
+export PATH="/usr/local/opt/node@22/bin:$PATH"

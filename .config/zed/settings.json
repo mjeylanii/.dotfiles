@@ -7,8 +7,15 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
   "features": {
-    "inline_completion_provider": "none"
+    "inline_completion_provider": "copilot"
   },
   "theme": "Andromeda",
   "ui_font_size": 16,
@@ -17,9 +24,7 @@
     "eslint": {
       "settings": {
         "codeActionOnSave": {
-          "rules": [
-            "import/order"
-          ]
+          "rules": ["import/order"]
         }
       }
     }
