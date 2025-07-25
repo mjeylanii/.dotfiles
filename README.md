@@ -7,9 +7,6 @@ This directory contains the dotfiles for my system
 Ensure you have the following installed on your system:
 
 ```shell
-brew tap leoafarias/fvm
-brew install fvm
-
 brew install gh
 
 brew install koekeishiya/formulae/yabai
@@ -44,7 +41,7 @@ Next, use GNU stow to create symlinks
 stow .
 ```
 
-Finall, ensure to download and install the nerd font, preferably JetBrainsMono Nerd font:
+Finally, ensure to download and install the nerd font, preferably JetBrainsMono Nerd font:
 https://www.nerdfonts.com/font-downloads
 
 ## Start Yabai
