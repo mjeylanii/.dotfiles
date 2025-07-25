@@ -1,5 +1,5 @@
 # open iTerm2, VScode, and Firefox with shortcuts
-cmd - return : open -a "Alacritty"
+cmd - return : open -a "iTerms"
 cmd + shift - return : open -a "zed"
 alt - return : open -a Firefox
 
