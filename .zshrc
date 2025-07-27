@@ -17,10 +17,6 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
-# Flutter
-export PATH="$HOME/fvm/versions/stable/bin:$PATH"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
