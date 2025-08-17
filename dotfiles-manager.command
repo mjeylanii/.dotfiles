@@ -77,7 +77,8 @@ show_main_menu() {
     echo ""
     
     echo "4. ${CYAN}Shortcuts & Integration${NC}"
-    echo "   • Create macOS shortcuts"
+    echo "   • Auto-create shortcuts (requires Shortcuts CLI)"
+    echo "   • Create desktop shortcuts (no CLI required)"
     echo "   • View documentation"
     echo ""
     
@@ -187,18 +188,20 @@ show_shortcuts_menu() {
     clear
     print_header "Shortcuts & Integration"
     echo ""
-    echo "1. ${CYAN}Create Shortcuts${NC} - macOS Shortcuts app"
-    echo "2. ${CYAN}View Documentation${NC} - Open docs folder"
-    echo "3. ${CYAN}Back to Main Menu${NC}"
+    echo "1. ${CYAN}Auto-create Shortcuts${NC} - macOS Shortcuts app (requires CLI)"
+    echo "2. ${CYAN}Create Desktop Shortcuts${NC} - Desktop shortcuts (no CLI needed)"
+    echo "3. ${CYAN}View Documentation${NC} - Open docs folder"
+    echo "4. ${CYAN}Back to Main Menu${NC}"
     echo ""
     
-    read -p "Enter your choice (1-3): " -n 1 -r
+    read -p "Enter your choice (1-4): " -n 1 -r
     echo ""
     
     case $REPLY in
-        1) run_script "create-shortcuts.command" ;;
-        2) open_docs ;;
-        3) show_main_menu ;;
+        1) run_script "auto-create-shortcuts.command" ;;
+        2) run_script "create-desktop-shortcuts.command" ;;
+        3) open_docs ;;
+        4) show_main_menu ;;
         *) 
             print_error "Invalid choice. Please try again."
             sleep 2
