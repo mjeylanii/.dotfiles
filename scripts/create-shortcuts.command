@@ -11,26 +11,45 @@ BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 NC='\033[0m' # No Color
 
+# Check if colors are supported
+if [[ -t 1 ]] && [[ -n "$TERM" ]] && [[ "$TERM" != "dumb" ]]; then
+    # Colors are supported
+    USE_COLORS=true
+else
+    # Colors are not supported
+    USE_COLORS=false
+fi
+
+# Function to print colored text only if colors are supported
+print_color() {
+    if [[ "$USE_COLORS" == "true" ]]; then
+        echo -e "$1"
+    else
+        # Strip color codes and print plain text
+        echo "$1" | sed 's/\x1b\[[0-9;]*m//g'
+    fi
+}
+
 print_header() {
-    echo -e "${PURPLE}================================${NC}"
-    echo -e "${PURPLE}$1${NC}"
-    echo -e "${PURPLE}================================${NC}"
+    print_color "${PURPLE}================================${NC}"
+    print_color "${PURPLE}$1${NC}"
+    print_color "${PURPLE}================================${NC}"
 }
 
 print_status() {
-    echo -e "${BLUE}[INFO]${NC} $1"
+    print_color "${BLUE}[INFO]${NC} $1"
 }
 
 print_success() {
-    echo -e "${GREEN}[✓]${NC} $1"
+    print_color "${GREEN}[✓]${NC} $1"
 }
 
 print_warning() {
-    echo -e "${YELLOW}[!]${NC} $1"
+    print_color "${YELLOW}[!]${NC} $1"
 }
 
 print_error() {
-    echo -e "${RED}[✗]${NC} $1"
+    print_color "${RED}[✗]${NC} $1"
 }
 
 # Get the directory where this script is located

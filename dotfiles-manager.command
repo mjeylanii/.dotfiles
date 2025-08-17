@@ -12,30 +12,49 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+# Check if colors are supported
+if [[ -t 1 ]] && [[ -n "$TERM" ]] && [[ "$TERM" != "dumb" ]]; then
+    # Colors are supported
+    USE_COLORS=true
+else
+    # Colors are not supported
+    USE_COLORS=false
+fi
+
+# Function to print colored text only if colors are supported
+print_color() {
+    if [[ "$USE_COLORS" == "true" ]]; then
+        echo -e "$1"
+    else
+        # Strip color codes and print plain text
+        echo "$1" | sed 's/\x1b\[[0-9;]*m//g'
+    fi
+}
+
 print_header() {
-    echo -e "${PURPLE}================================${NC}"
-    echo -e "${PURPLE}$1${NC}"
-    echo -e "${PURPLE}================================${NC}"
+    print_color "${PURPLE}================================${NC}"
+    print_color "${PURPLE}$1${NC}"
+    print_color "${PURPLE}================================${NC}"
 }
 
 print_status() {
-    echo -e "${BLUE}[INFO]${NC} $1"
+    print_color "${BLUE}[INFO]${NC} $1"
 }
 
 print_success() {
-    echo -e "${GREEN}[✓]${NC} $1"
+    print_color "${GREEN}[✓]${NC} $1"
 }
 
 print_warning() {
-    echo -e "${YELLOW}[!]${NC} $1"
+    print_color "${YELLOW}[!]${NC} $1"
 }
 
 print_error() {
-    echo -e "${RED}[✗]${NC} $1"
+    print_color "${RED}[✗]${NC} $1"
 }
 
 print_menu_item() {
-    echo -e "${CYAN}$1${NC}"
+    print_color "${CYAN}$1${NC}"
 }
 
 # Get the directory where this script is located
@@ -58,30 +77,30 @@ show_main_menu() {
     print_status "Choose an option to manage your dotfiles:"
     echo ""
     
-    echo "1. ${CYAN}Setup & Installation${NC}"
+    print_color "1. ${CYAN}Setup & Installation${NC}"
     echo "   • Install dotfiles"
     echo "   • Update dotfiles"
     echo "   • Check system status"
     echo ""
     
-    echo "2. ${CYAN}Services & Maintenance${NC}"
+    print_color "2. ${CYAN}Services & Maintenance${NC}"
     echo "   • Start window management services"
     echo "   • Backup dotfiles"
     echo "   • Clean up files"
     echo ""
     
-    echo "3. ${CYAN}Advanced Operations${NC}"
+    print_color "3. ${CYAN}Advanced Operations${NC}"
     echo "   • Migrate to standard location"
     echo "   • Hybrid setup"
     echo "   • Clean repository"
     echo ""
     
-    echo "4. ${CYAN}Shortcuts & Integration${NC}"
+    print_color "4. ${CYAN}Shortcuts & Integration${NC}"
     echo "   • Create macOS shortcuts"
     echo "   • View documentation"
     echo ""
     
-    echo "5. ${CYAN}Exit${NC}"
+    print_color "5. ${CYAN}Exit${NC}"
     echo ""
     
     read -p "Enter your choice (1-5): " -n 1 -r
@@ -106,10 +125,10 @@ show_setup_menu() {
     clear
     print_header "Setup & Installation"
     echo ""
-    echo "1. ${CYAN}Install Dotfiles${NC} - Initial setup"
-    echo "2. ${CYAN}Update Dotfiles${NC} - Pull latest changes"
-    echo "3. ${CYAN}Check Status${NC} - System diagnostics"
-    echo "4. ${CYAN}Back to Main Menu${NC}"
+    print_color "1. ${CYAN}Install Dotfiles${NC} - Initial setup"
+    print_color "2. ${CYAN}Update Dotfiles${NC} - Pull latest changes"
+    print_color "3. ${CYAN}Check Status${NC} - System diagnostics"
+    print_color "4. ${CYAN}Back to Main Menu${NC}"
     echo ""
     
     read -p "Enter your choice (1-4): " -n 1 -r
@@ -133,10 +152,10 @@ show_maintenance_menu() {
     clear
     print_header "Services & Maintenance"
     echo ""
-    echo "1. ${CYAN}Start Services${NC} - Start window management"
-    echo "2. ${CYAN}Backup Dotfiles${NC} - Create backup"
-    echo "3. ${CYAN}Cleanup Files${NC} - Remove broken links"
-    echo "4. ${CYAN}Back to Main Menu${NC}"
+    print_color "1. ${CYAN}Start Services${NC} - Start window management"
+    print_color "2. ${CYAN}Backup Dotfiles${NC} - Create backup"
+    print_color "3. ${CYAN}Cleanup Files${NC} - Remove broken links"
+    print_color "4. ${CYAN}Back to Main Menu${NC}"
     echo ""
     
     read -p "Enter your choice (1-4): " -n 1 -r
@@ -160,10 +179,10 @@ show_advanced_menu() {
     clear
     print_header "Advanced Operations"
     echo ""
-    echo "1. ${CYAN}Migrate to Standard${NC} - Move to ~/.dotfiles"
-    echo "2. ${CYAN}Hybrid Setup${NC} - Local + external setup"
-    echo "3. ${CYAN}Clean Repository${NC} - Remove ._ files"
-    echo "4. ${CYAN}Back to Main Menu${NC}"
+    print_color "1. ${CYAN}Migrate to Standard${NC} - Move to ~/.dotfiles"
+    print_color "2. ${CYAN}Hybrid Setup${NC} - Local + external setup"
+    print_color "3. ${CYAN}Clean Repository${NC} - Remove ._ files"
+    print_color "4. ${CYAN}Back to Main Menu${NC}"
     echo ""
     
     read -p "Enter your choice (1-4): " -n 1 -r
@@ -187,9 +206,9 @@ show_shortcuts_menu() {
     clear
     print_header "Shortcuts & Integration"
     echo ""
-    echo "1. ${CYAN}Create Shortcuts${NC} - macOS Shortcuts app"
-    echo "2. ${CYAN}View Documentation${NC} - Open docs folder"
-    echo "3. ${CYAN}Back to Main Menu${NC}"
+    print_color "1. ${CYAN}Create Shortcuts${NC} - macOS Shortcuts app"
+    print_color "2. ${CYAN}View Documentation${NC} - Open docs folder"
+    print_color "3. ${CYAN}Back to Main Menu${NC}"
     echo ""
     
     read -p "Enter your choice (1-3): " -n 1 -r
