@@ -25,6 +25,8 @@ brew install zoxide
 
 ## Installation
 
+### Option 1: Standard Installation (Recommended for most users)
+
 First, check out the dotfiles repo in your $HOME directory using git
 
 ```shell
@@ -41,8 +43,52 @@ Next, use GNU stow to create symlinks
 stow .
 ```
 
+### Option 2: External Drive Installation
+
+If your dotfiles are stored on an external drive (like `/Volumes/vaultex/.dotfiles`), use the provided installation script:
+
+```shell
+cd /path/to/your/external/drive/.dotfiles
+./install.sh
+```
+
+This script will:
+- Automatically detect the external drive setup
+- Use the `--target` option to create symlinks in your home directory
+- Backup any existing dotfiles before installation
+- Install required Oh My Zsh plugins
+- Handle git submodules
+
+### Option 3: Manual External Drive Setup
+
+If you prefer to do it manually:
+
+```shell
+cd /path/to/your/external/drive/.dotfiles
+stow --target=$HOME .
+```
+
 Finally, ensure to download and install the nerd font, preferably JetBrainsMono Nerd font:
 https://www.nerdfonts.com/font-downloads
+
+## Updating Dotfiles
+
+### For External Drive Users
+
+If your dotfiles are on an external drive, use the update script:
+
+```shell
+cd /path/to/your/external/drive/.dotfiles
+./update.sh
+```
+
+### For Standard Installation
+
+```shell
+cd ~/.dotfiles
+git pull origin main
+stow .
+```
 
 ## Start Yabai
 

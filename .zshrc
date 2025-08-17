@@ -176,3 +176,8 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(rbenv init - zsh)"
 export PATH="/usr/local/opt/node@22/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mohamedjeylani/.lmstudio/bin"
+# End of LM Studio CLI section
+
