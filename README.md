@@ -68,6 +68,15 @@ cd /path/to/your/external/drive/.dotfiles
 stow --target=$HOME .
 ```
 
+### Option 4: macOS Shortcuts (Easiest)
+
+For the easiest setup, use the provided macOS shortcuts:
+
+1. **Setup**: Double-click `setup-dotfiles.command` in Finder
+2. **Update**: Double-click `update-dotfiles.command` in Finder
+
+These shortcuts automatically detect your setup and run the appropriate commands. See `MACOS_SHORTCUTS.md` for detailed instructions.
+
 Finally, ensure to download and install the nerd font, preferably JetBrainsMono Nerd font:
 https://www.nerdfonts.com/font-downloads
 
