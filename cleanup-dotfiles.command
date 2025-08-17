@@ -145,7 +145,46 @@ fi
 
 echo ""
 
-print_header "3. Finding Temporary Files"
+print_header "3. Finding macOS Resource Fork Files"
+
+# Find ._ files (macOS resource fork files)
+dot_files=()
+while IFS= read -r -d '' file; do
+    dot_files+=("$file")
+done < <(find "$SCRIPT_DIR" -maxdepth 3 -type f -name "._*" -print0 2>/dev/null)
+
+if [[ ${#dot_files[@]} -eq 0 ]]; then
+    print_success "No ._* files found"
+else
+    print_warning "Found ${#dot_files[@]} ._* file(s) (macOS resource fork files):"
+    for file in "${dot_files[@]}"; do
+        relative_path=$(echo "$file" | sed "s|$SCRIPT_DIR/||")
+        echo "  $relative_path"
+    done
+    
+    echo ""
+    read -p "Remove ._* files? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        removed_count=0
+        for file in "${dot_files[@]}"; do
+            if rm "$file" 2>/dev/null; then
+                relative_path=$(echo "$file" | sed "s|$SCRIPT_DIR/||")
+                print_success "Removed: $relative_path"
+                ((removed_count++))
+            else
+                print_error "Failed to remove: $file"
+            fi
+        done
+        print_status "Removed $removed_count ._* file(s)"
+    else
+        print_status "Skipped ._* file removal"
+    fi
+fi
+
+echo ""
+
+print_header "4. Finding Temporary Files"
 
 # Find temporary files in dotfiles directory
 temp_files=()
@@ -184,7 +223,7 @@ fi
 
 echo ""
 
-print_header "4. System Cleanup"
+print_header "5. System Cleanup"
 
 # Check for other cleanup opportunities
 print_status "Checking for other cleanup opportunities..."

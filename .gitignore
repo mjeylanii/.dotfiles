@@ -6,3 +6,8 @@ gh/
 flutter/
 raycast/
 Webull Desktop/
+._*
+Thumbs.db
+*.tmp
+*.log
+*.bak
