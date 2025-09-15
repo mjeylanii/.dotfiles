@@ -181,3 +181,10 @@ export PATH="/usr/local/opt/node@22/bin:$PATH"
 export PATH="$PATH:/Users/mohamedjeylani/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+. "$HOME/.langflow/uv/env"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/mohamedjeylani/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
